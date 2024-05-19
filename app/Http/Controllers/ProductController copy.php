@@ -12,16 +12,7 @@ class ProductController extends Controller
   {
 	    $prods = Product::with('variants')->get();
 
-      if (request()->segment(1) == 'api') return response()->json([
-        'error' => false,
-        'list' => $prods,
-      ]);
-      
-      return view('view_product',[
-        'title' => 'Daftar Product',
-        'data' => $prods,
-      ]);
-	    // return view('product.index', ['list' => $prods]);
+	    return view('product.index', ['list' => $prods]);
   }
 
   public function create()
